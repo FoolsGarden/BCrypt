@@ -1,0 +1,20 @@
+"Welcome, <%=@user.name%>!"
+
+<form action="/users/<%=@user.id%>/update" method="post">
+    <br>
+    <div>
+      New name: <input type="text" name="fullname">
+      <br>
+      <br>
+      New email: <input type="text" name="email">
+      <br>
+      <br>
+      New password: <input type="password" name  ="pass">
+      <br>
+      <br>
+      <input type="submit" value="Update Name">
+   </div>
+</form>
+
+<a href="/log_out">log_out</a>
+  
