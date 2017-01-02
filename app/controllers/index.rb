@@ -1,7 +1,6 @@
 get '/users' do
   # La siguiente linea hace render de la vista 
   # que esta en app/views/index.erb
-
   @users = User.all  
 
   erb :index
@@ -15,14 +14,18 @@ get '/users/sign_in' do
 end
 
 post '/users/sign_in' do
-
-  @user = User.new(name: params[:fullname], email: params[:email], password: params[:pass] )
+  puts "INSIDE POST"
+  p params
+  puts "user:"
+  p @user = User.new(name: params[:fullname], email: params[:email], password: params[:pass] )
+  p @user.errors.full_messages
 
   if @user.save
+    puts "TRUE"
     session[:id] = @user.id
     redirect to "/users_home/#{@user.id}"
   else
-    "ERROR"
+    puts "ERROR"
     erb :sign_in 
   end
 
@@ -60,6 +63,12 @@ get '/users_home/:id' do
   erb :profile
 end
 
+get '/users/:id/update' do 
+  @user = User.find(params[:id])
+  erb :update
+
+end
+
 post '/users/:id/update' do
 
   @user = User.find(session[:id])
@@ -67,23 +76,22 @@ post '/users/:id/update' do
   new_email = params[:email]
   new_pass = params[:pass]
   
-  unless new_pass.blank? 
-    @update_name = User.find(session[:id]).update(name: new_name)
+  if new_pass.empty?
+    @user.update(name: new_name, email: new_email)
+  else
+    @user.update(name: new_name, email: new_email, password: new_pass)
   end
 
-  unless new_email.blank?
-    @update_email = User.find(session[:id]).update(email: new_email)
-  end
-  
-  unless new_pass.blank?  
-    @update_pass = User.find(session[:id]).update(password: new_pass)
-  end
-  
-  erb :profile
-  
+  redirect to "/users_home/#{@user.id}"
 
 end
 
+
+get "/delete/:id" do 
+  @user = User.find(session[:id])
+  @user.destroy
+  redirect to '/users'
+end
 
 get '/log_out' do 
   session.clear

@@ -2,10 +2,10 @@ class User < ActiveRecord::Base
  
   include BCrypt
 
-  validates :name, :email, presence: true, uniqueness: true
-  validates :password, presence: true
-
-   def password
+  validates :email, presence: true, uniqueness: true
+  validates :name, :password, presence: true
+  
+  def password
     @password ||= Password.new(password_digest)
   end
 

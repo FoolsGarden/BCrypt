@@ -1,0 +1,17 @@
+<form action="/users/<%= @user.id %>/update" method="post">
+    <br>
+    <div>
+      name: <input type="text" value="<%= @user.name %>" name="fullname">
+      <br>
+      <br>
+      email: <input type="text" value="<%= @user.email %>" name="email">
+      <br>
+      <br>
+      password: <input type="password" name="pass">
+      <br>
+      <br>
+      <input type="submit" value="Update information">
+   </div>
+</form>
+
+<a class='button' href="/users_home/<%= @user.id %>">Back to your porfile</a>

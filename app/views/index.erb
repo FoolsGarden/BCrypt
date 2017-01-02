@@ -1,18 +1,21 @@
-  <h1>All users!</h1>
-  
-  <% if @users %>
-    <% @users.each do |user| %>
-      <li><%=user.id%>.<a> Name:</a>  <%= user.name %>
-      <br>
-      <a id="email"> Email:</a>  <%= user.email %>
-      <br>
-      </li>
-    <% end %> 
-  <%end%>
+<h1>All users!</h1>
 
 
-  <a href="/users/sign_in">Sign in</a>
- 
-  <a href="/users/log_in">Log in</a>
+<% if @users %>
+  <% @users.each do |user| %>
+  <ul>
+    <li><%=user.id%>.<a> Name:</a>  <%= user.name %>
+    <br>
+    <a id="email"> Email:</a>  <%= user.email %>
+    <br>
+    </li>
+  </ul>
+  <% end %> 
+<%end%>
+
+
+<a class='button' href="/users/sign_in">Sign in</a>
+
+<a class='button' href="/users/log_in">Log in</a>
 
   
