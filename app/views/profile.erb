@@ -1,8 +1,22 @@
-"Welcome, <%=@user.name%>!"
-<br>
+<a class='button' href="/">Home</a>
 <a class='button' href="/users/<%=@user.id%>/update">update information</a>
+<br>
+<br>
+<br>
+
+<h1>"Welcome, <%=@user.name%>!"</h1>
+<br>
+<br>
+<br>
+
+
+<form action='/poll/create' method='post'>
+  <input type="text" name="poll_title" value="" placeholder="Add poll title"><input type="submit">
+</form>
+
 
 <br>
-<a class='button' href="/log_out">log_out</a>
-<br>
+<a class='button' href="/log_out">log_out</a> 
 <a class='button' href="/delete/<%=@user.id%>">Delete your account</a> 
+<br>
+

@@ -17,15 +17,141 @@ a#email {
   margin-left: 18px;
 }
 
-
 a.button {
-  font: bold 11px Arial;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  text-align: center;
   text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid #CCCCCC;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #CCCCCC;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+a.button:hover, a:active {
+    background-color: #45a049;
+}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=password], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+div {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+/*Nav Bar congig*/
+ul li.bar a.nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  list-style: none;
+  line-height: 1;
+  display: block;
+  position: relative;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+ul:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0;
+}
+
+ul {
+  background: #ffffff;
+}
+ul > li.bar {
+  float: left;
+}
+ul {
+  font-size: 0;
+  text-align: center;
+}
+ul > li.bar {
+  display: inline-block;
+  float: none;
+}
+ ul > li.bar {
+  float: right;
+}
+ul > li.bar > a.nav {
+  margin-right: 0;
+  margin-left: -4px;
+}
+ ul > li.bar > a.nav {
+  z-index: 2;
+  padding: 18px 25px 12px 25px;
+  font-size: 15px;
+  font-weight: 400;
+  text-decoration: none;
+  color: #444444;
+  margin-right: -4px;
+}
+ ul > li.bar.active > a.nav,
+ ul > li.bar:hover > a.nav,
+ ul > li.bar > a:hover {
+  color: #ffffff;
+}
+ul > li.bar > a.nav:after {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 90%;
+  border-radius: 4px;
+  content: "";
+  -webkit-transform-origin: bottom;
+  -moz-transform-origin: bottom;
+  transform-origin: bottom;
+}
+ul > li.bar.active > a.nav:after,
+ul > li.bar:hover > a.nav:after,
+ul > li.bar > a.nav:hover:after {
+  background: #45a049;
+}
+
+h1{
+  
+  display: inline;
+
 }

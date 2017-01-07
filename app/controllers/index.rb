@@ -1,8 +1,10 @@
-get '/users' do
+get '/' do
   # La siguiente linea hace render de la vista 
   # que esta en app/views/index.erb
-  @users = User.all  
-
+  @polls = Poll.all
+  if session[:id] != nil
+    @user = User.find(session[:id])
+  end
   erb :index
 
 end
@@ -38,9 +40,7 @@ end
 post '/users/log_in' do
   @email = params[:email]
   @password = params[:pass]
-  
   if User.authenticate(@email, @password)
-    
     @user = User.find_by(email: @email)
     session[:id] = @user.id
     redirect to "/users_home/#{@user.id}"
@@ -90,10 +90,10 @@ end
 get "/delete/:id" do 
   @user = User.find(session[:id])
   @user.destroy
-  redirect to '/users'
+  redirect to '/'
 end
 
 get '/log_out' do 
   session.clear
-  redirect to '/users'  
+  redirect to '/'  
 end

@@ -1,0 +1,17 @@
+
+<% @poll.questions.each do |question| %>
+<h3><%= question.title %></h3>
+<% end %>
+<% if @questions.blank? %>
+  <p>No questions yet </p>
+<% else %>
+  
+  <% @questions.options.each do |option| %>
+    <form>
+    <input type="radio" name="option" value "<%= option.body %>"><%= option.body %><br> 
+
+    </form>
+  <% end %>
+<% end %>
+
+

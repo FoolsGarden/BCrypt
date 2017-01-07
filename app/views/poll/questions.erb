@@ -1,0 +1,21 @@
+<br><%= @poll.poll_name %>
+<br>
+<br>
+
+
+<form id="question" action='/poll/<%= @poll.id %>/add_questions' class="Survey" method="post">
+  <input id='question_id' type="hidden" name="question_id" value='<%= @poll.id %>'>
+  <input id='params_question' type="text" name="question" placeholder="Write your question">
+  <input type="submit" value="Add question" id="addQuestions">
+  
+</form>
+
+
+ <div id="poll_name">
+  <ul>
+    <li>
+      <%= erb :"poll/options", layout: false %>
+    </li>
+  </ul> 
+</div> 
+

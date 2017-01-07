@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
- 
+  has_many :polls
+  has_many :user_answers
   include BCrypt
 
   validates :email, presence: true, uniqueness: true
