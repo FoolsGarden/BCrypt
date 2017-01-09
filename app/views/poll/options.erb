@@ -1,15 +1,17 @@
-<br><% if @question %>
-<h1><%= @question.title %></h1>
 <br>
-<br>
+<% if @question %>
+  <h1><%= @question.title %></h1>
+  <br>
+  <br>
 
 
-<form id="option" action='/question/<%= @question.id %>/add_option' class="Survey" method="post">
-  <input id='option_id' type="hidden" name="option_id" value='<%= @question.id %>'>
-  <input id='params_option' type="text" name="option" placeholder="Write your option">
-  <input type="submit" value="Add option" id="addOptions">
-  
-</form
+  <form id="option_<%= @option.id %>" action='/question/<%= @question.id %>/add_option' class="Survey" method="post">
+    <input id='option_id_<%= @option.id %>' class="option" type="hidden" name="option_id" value='<%= @option.id %>'>
+    <input id='question_id_<%= @option.id %>' type="hidden" name="question_id" value='<%= @question.id %>'>
+    <input id='params_option_<%= @option.id %>' type="text" name="option" placeholder="Write your option">
+    <input type="submit" value="Add option" id="addOptions_<%= @option.id %>">
+  </form>
+
 <% end %>
 
                                                                   

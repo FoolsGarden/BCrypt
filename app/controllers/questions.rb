@@ -1,5 +1,4 @@
 post '/poll/:poll_id/add_questions' do
-  params[:question_name]
   poll = params[:poll_id]
   @poll = Poll.find(poll)
   @question = Question.new(title: params[:question_name])
@@ -20,18 +19,27 @@ post '/poll/:poll_id/add_questions' do
 end
 
 get '/question/:question_id/add_options' do
-   question = params[:question_id]
-   @question = Question.find(question)
-   erb :"poll/options"
+  question = params[:question_id]
+  @option = Option.create
+  @question = Question.find(question)
+  erb :"poll/options", layout: false
 end
 
 post '/question/:question_id/add_option' do
-  question = params[:option_id]
+  puts "PARAMETROS"
+  p params
+  question = params[:question_id]
   @question = Question.find(question)
-  @option = Option.new(body: params[:option])
+  @option = Option.find(params[:option_id])
+  @option.body = params[:option]
 
   if @option.save
     @question.options << @option
-
   end
+
+  if request.xhr?
+    @option = Option.create
+    erb :"poll/options", layout: false
+  end
+
 end
